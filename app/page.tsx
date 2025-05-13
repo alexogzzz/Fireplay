@@ -11,7 +11,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10" />
         <Image
           src="/images/hero-bg.jpg"
-          alt="Fireplay - Tu tienda de videojuegos"
+          alt=""
           fill
           className="object-cover"
           priority
