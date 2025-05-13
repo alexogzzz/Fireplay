@@ -20,6 +20,7 @@ export async function GET(request: Request) {
     const data = await response.json()
     return NextResponse.json(data)
   } catch (error) {
+    console.error("Error fetching games:", error)
     return NextResponse.json({ error: 'Error fetching games' }, { status: 500 })
   }
 }

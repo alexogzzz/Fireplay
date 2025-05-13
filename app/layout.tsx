@@ -11,7 +11,7 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Fireplay - Tu tienda de videojuegos",
+  title: "",
   description: "Descubre y compra los mejores videojuegos en Fireplay",
   manifest: "/manifest.json",
     generator: 'v0.dev'

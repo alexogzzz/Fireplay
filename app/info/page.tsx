@@ -25,7 +25,7 @@ export default function InfoPage() {
           </div>
           <div className="rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="/images/about-project.jpg"
+              src="/images/Link.jpeg"
               alt="Sobre el proyecto"
               width={600}
               height={400}

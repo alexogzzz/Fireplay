@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -11,9 +11,23 @@ export default function GameFilters() {
 
   const [ordering, setOrdering] = useState(searchParams.get("ordering") || "-rating")
 
+  // Efecto para sincronizar el estado con los parámetros de URL
+  useEffect(() => {
+    const currentOrdering = searchParams.get("ordering");
+    if (currentOrdering && currentOrdering !== ordering) {
+      setOrdering(currentOrdering);
+    }
+  }, [searchParams, ordering]);
+
   const handleFilterChange = (value: string) => {
     setOrdering(value)
-    router.push(`/games?ordering=${value}`)
+    
+    // Construir nueva URL con parámetros de búsqueda
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("ordering", value);
+    
+    // Navegar a la nueva URL
+    router.push(`/games?${params.toString()}`);
   }
 
   return (

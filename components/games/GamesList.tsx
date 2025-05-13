@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { fetchGames } from "@/lib/api"
 import type { Game } from "@/lib/types"
 import GameCard from "./GameCard"
@@ -12,12 +13,21 @@ export default function GamesList() {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
+  const searchParams = useSearchParams()
+  const ordering = searchParams.get("ordering") || "-rating"
+
+  useEffect(() => {
+    // Resetear el estado cuando cambia el ordenamiento
+    setGames([])
+    setPage(1)
+    setLoading(true)
+  }, [ordering])
 
   useEffect(() => {
     const loadGames = async () => {
       try {
         setLoading(true)
-        const data = await fetchGames(page)
+        const data = await fetchGames(page, ordering)
 
         if (page === 1) {
           setGames(data.results)
@@ -34,7 +44,7 @@ export default function GamesList() {
     }
 
     loadGames()
-  }, [page])
+  }, [page, ordering])
 
   const loadMore = () => {
     setPage((prev) => prev + 1)

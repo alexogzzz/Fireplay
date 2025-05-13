@@ -27,7 +27,12 @@ export default function Home() {
             <Button asChild size="lg" className="bg-orange-500 hover:bg-orange-600">
               <Link href="/games">Explorar juegos</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="bg-white text-orange-500 border-orange-500 hover:bg-orange-500 hover:text-white"
+            >
               <Link href="/register">Crear cuenta</Link>
             </Button>
           </div>
@@ -59,7 +64,7 @@ export default function Home() {
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/images/about-fireplay.jpg"
+                src="/images/The.jpg"
                 alt="Sobre Fireplay"
                 width={600}
                 height={400}
